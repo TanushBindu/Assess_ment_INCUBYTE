@@ -10,6 +10,7 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 public class Compose_mail
@@ -64,7 +65,7 @@ public class Compose_mail
     @When("User enter the Subject")
     public void user_enter_the_subject()
     {
-        cp.enter_to_mailSubject("Incubyte");
+        cp.enter_to_mailSubject("Incubyte1");
     }
     @When("User enter the content in the body of the mail")
     public void user_enter_the_content_in_the_body_of_the_mail()
@@ -76,6 +77,13 @@ public class Compose_mail
         cp.click_send_mail();
         cp.Sending_toaster();
         cp.Sent_toaster();
+    }
+
+    @Then("Navigate to the sent Items and check whether the mail is present")
+    public void navigate_to_the_sent_items_and_check_whether_the_mail_is_present() throws InterruptedException {
+        cp.click_sent_item();
+        System.out.println(cp.get_sent_mail());
+        Assert.assertEquals("Incubyte1",cp.get_sent_mail());
     }
 
 }

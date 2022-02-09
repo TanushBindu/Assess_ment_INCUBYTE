@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Compose_page extends Base_page
 {
-    WebDriver driver;
+
     public Compose_page(WebDriver driver) {
         super(driver);
     }
@@ -81,5 +81,24 @@ public class Compose_page extends Base_page
     public void click_send_mail()
     {
         click_element(send_mail_button);
+    }
+
+
+    @CacheLookup
+    @FindBy(xpath = "(//div[@class='aio UKr6le'])[4]")
+    WebElement sent_items;
+
+    public void click_sent_item()
+    {
+        click_element(sent_items);
+    }
+
+    @CacheLookup
+    @FindBy(xpath = "(//div[@class='y6'])[3]")
+    WebElement sent_mail;
+
+    public String get_sent_mail() throws InterruptedException {
+        Thread.sleep(3000);
+        return sent_mail.getText();
     }
 }

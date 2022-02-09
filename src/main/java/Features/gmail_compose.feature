@@ -8,3 +8,4 @@ Feature: Mail Composing
     And User enter the Subject
     And User enter the content in the body of the mail
     Then User click on send button
+    And Navigate to the sent Items and check whether the mail is present
